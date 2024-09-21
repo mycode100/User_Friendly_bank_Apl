@@ -1,0 +1,257 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: auto;  /* Allows body to scroll vertically */
+}
+
+.header {
+    background-color: #01a0e1;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header-left .bank-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.user {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.user img {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.user .username {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.user .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 150px;
+}
+
+.user .dropdown a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.user .dropdown a:hover {
+    background-color: #ddd;
+}
+
+.user:hover .dropdown {
+    display: block;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;  /* Makes the container scrollable */
+    padding-bottom: 20px;
+}
+
+.left-side {
+    width: 220px;
+    background-color: #0050b3;
+    color: white;
+    padding: 20px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    overflow-y: auto;  /* Left-side panel can scroll if content exceeds */
+}
+
+.left-side h2 {
+    text-align: center;
+}
+
+.left-side a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.left-side a:hover {
+    background-color: #D2E0FB;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;  /* Makes main content scrollable if it overflows */
+    box-sizing: border-box;
+}
+
+.welcome-message {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    
+}
+
+.card {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+}
+
+.card h3 {
+    margin: 10px 0;
+
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;  /* Adds margin between slideshow and footer */
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    transition: opacity 0.5s ease;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 8px;
+    height: 400px;
+
+}
+
+input[name="slide"] {
+    display: none;
+}
+
+#slide-1:checked ~ .slides {
+    transform: translateX(0%);
+}
+
+#slide-2:checked ~ .slides {
+    transform: translateX(-100%);
+}
+
+#slide-3:checked ~ .slides {
+    transform: translateX(-200%);
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav-dot {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-dot:hover {
+    background-color: #717171;
+}
+
+/* Highlight the dot corresponding to the selected slide */
+#slide-1:checked ~ .navigation #dot-1 {
+    background-color: #717171;
+}
+
+#slide-2:checked ~ .navigation #dot-2 {
+    background-color: #717171;
+}
+
+#slide-3:checked ~ .navigation #dot-3 {
+    background-color: #717171;
+}
+
+.footer {
+    background-color: #01a0e1;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

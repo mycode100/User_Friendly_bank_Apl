@@ -1,0 +1,118 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: whitesmoke;
+}
+
+header {
+    background-color: #01a0e1;
+    padding: 20px;
+    color: #fff;
+}
+
+.header-content {
+    display: flex;
+    justify-content: left;
+
+}
+
+.logo {
+    width: 60px;
+    margin-right: 15px;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+/* Sign In and Sign Up Box */
+.sign-in-box, .sign-up-box {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.image-box {
+    flex: 1;
+    object-fit: cover;
+}
+
+.img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-box {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Form Elements */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form-outline {
+    margin-bottom: 20px;
+}
+
+.form-outline label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Switch Links */
+.switch {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.switch a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.switch a:hover {
+    text-decoration: underline;
+}
