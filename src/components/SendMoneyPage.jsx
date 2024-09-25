@@ -86,7 +86,7 @@ const SendMoneyPage = () => {
       <div className="header">
         <h1>Send Money</h1>
       </div>
-      <div className="container">
+      <div className="container input-enabled"> {/* Add input-enabled class */}
         <div className="input-section">
           <input
             type="number"

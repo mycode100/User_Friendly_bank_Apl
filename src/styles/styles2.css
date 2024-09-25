@@ -1,4 +1,4 @@
-General Styles
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -37,15 +37,16 @@ body {
   margin: 0;
 }
 
-/* Input Section */
-.input-section {
+/* Input Section - applied only where input is needed */
+.input-enabled .input-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.input-section input, .input-section select {
+.input-enabled .input-section input,
+.input-enabled .input-section select {
   flex: 1;
   padding: 12px;
   border: 1px solid #ccc;
@@ -55,7 +56,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.input-section button {
+.input-enabled .input-section button {
   padding: 12px 20px;
   background-color: #3e9dff;
   color: white;
@@ -66,13 +67,14 @@ body {
   transition: all 0.3s ease;
 }
 
-.input-section input:focus, .input-section select:focus {
+.input-enabled .input-section input:focus,
+.input-enabled .input-section select:focus {
   border-color: #3e9dff;
   outline: none;
   box-shadow: 0px 0px 5px rgba(62, 157, 255, 0.5);
 }
 
-.input-section button:hover {
+.input-enabled .input-section button:hover {
   background-color: #337fcc;
 }
 
@@ -138,7 +140,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .input-section {
+  .input-enabled .input-section {
     flex-direction: column;
   }
 
