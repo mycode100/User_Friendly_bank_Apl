@@ -63,10 +63,10 @@ const CreditPage = () => {
   return (
     <div>
       <div className="header">
-        <h1>Credit Management</h1>
+        <h1>Credit History</h1>
       </div>
       <div className="container">
-        <div className="input-section">
+        {/* <div className="input-section">
           <input
             type="text"
             value={customerID}
@@ -93,7 +93,7 @@ const CreditPage = () => {
             <option value="Others">Others</option>
           </select>
           <button onClick={addCredit}>Submit</button>
-        </div>
+        </div> */}
 
         <div className="history-section">
           <h3>Credit History</h3>

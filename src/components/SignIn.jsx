@@ -115,7 +115,7 @@ const SignIn = () => {
                 onChange={(e) => setEmail(e.target.value)}/>
               </div>
               <div className="form-outline">
-                <label htmlFor="customerId">Customer ID</label>
+                <label htmlFor="customerId">Enter Your Password</label>
                 <input type="text" id="customerId" className="form-control" 
                 onChange={(e) => setPassword(e.target.value)}/>
               </div>

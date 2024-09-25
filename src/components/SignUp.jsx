@@ -84,7 +84,7 @@ const SignUp = () => {
                   <input type="email" id="mailId" className="form-control" onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className="form-outline">
-                  <label htmlFor="customerId">Create Your Customer ID</label>
+                  <label htmlFor="customerId">Create Your Password</label>
                   <input type="text" id="customerId" className="form-control" onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <button type="submit" className="btn btn-primary">Sign Up</button>
