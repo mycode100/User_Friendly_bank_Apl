@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import bankLogo from '../images/bank-i.jpg';
 import { auth, db } from '../firebase';
@@ -14,7 +14,6 @@ import sec from '../images/sec.webp'
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [showPopup, setShowPopup] = useState(false);
 
   // Show popup on page load
@@ -27,21 +26,7 @@ const SignUp = () => {
     // Cleanup the timer on component unmount
     return () => clearTimeout(timer);
 }, []);
-useEffect(() => {
-  const handlePopState = (event) => {
-    if (location.pathname === '/signup') {
-      navigate('/signup', { replace: true });
-    }
-  };
-
-  // Listen for back button events
-  window.addEventListener('popstate', handlePopState);
-
-  // Clean up the event listener on component unmount
-  return () => {
-    window.removeEventListener('popstate', handlePopState);
-  };
-}, [location, navigate]);
+    
 
   // Close popup handler
   const handleClosePopup = () => setShowPopup(false);
