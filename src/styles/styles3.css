@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
+    background-color: #e0f7e9;;
   }
   
   .monitoring-container {
@@ -76,3 +76,28 @@ body {
   .header h1, .footer p {
     margin: 0;
   }
+
+
+  .speedometer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .speedometer-svg {
+    width: 200px;
+    height: 100px;
+  }
+  
+  .pointer {
+    transition: transform 0.5s ease-in-out;
+    transform-origin: center;
+  }
+  
+  .spend-amount {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  

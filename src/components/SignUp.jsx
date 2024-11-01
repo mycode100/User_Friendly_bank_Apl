@@ -1,229 +1,426 @@
-// import React,{useState} from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import '../styles/styles.css';
-// import bankLogo from '../images/bank-i.jpg';
-// import signUpImage from '../images/bank-c.jpg';
-// import { auth,db } from '../firebase';
-// import { setDoc,doc } from 'firebase/firestore';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-// const SignUp = () => {
-//     const navigate = useNavigate(); // Use for navigation
-
-//     const [email, setEmail] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [fname, setFname] = useState("");
-//     const [lname, setLname] = useState("");
-//     const [gender,setgender] = useState("");
-//     const [age, Setage] = useState("");
-  
-//     const handleRegister = async(e) => {
-//       e.preventDefault();
-//       try {
-//           await createUserWithEmailAndPassword(auth,email,password);
-//           const user=auth.currentUser;
-//           console.log(user);
-//           if(user)
-//           {
-//               await setDoc(doc(db,"Users",user.uid),
-//               {
-//                   email: user.email,
-//                   password: password,
-//                   firstname: fname,
-//                   lastname: lname,
-//                   Age: age,
-//               });
-//           }
-//           window.location.href='/home';
-//       }
-//       catch(error)
-//       {
-//           console.log(error.message);
-//       }
-//   }
-  
-//     return (
-//       <div>
-//         <header>
-//           <div className="header-content">
-//             <img src={bankLogo} alt="Bank Logo" className="logo" />
-//             <h1 style={{ padding: '10px' }}>Welcome to Trst Banking</h1>
-//           </div>
-//         </header>
-  
-//         <section className="container" style={{ height: '900px' }}>
-//           <div className="sign-up-box">
-//             <div className="image-box">
-//               <img src={signUpImage} alt="Sign Up Image" className="img-fluid" style={{ objectFit: 'fill' }} />
-//             </div>
-//             <div className="form-box">
-//               <h2>Sign Up</h2>
-//               <form onSubmit={handleRegister}>
-//                 <div className="form-outline">
-//                   <label htmlFor="firstName">First Name</label>
-//                   <input type="text" id="firstName" className="form-control" onChange={(e) => setFname(e.target.value)}/>
-//                 </div>
-//                 <div className="form-outline">
-//                   <label htmlFor="lastName">Last Name</label>
-//                   <input type="text" id="lastName" className="form-control" onChange={(e) => setLname(e.target.value)}/>
-//                 </div>
-//                 <div className="form-outline">
-//                   <label htmlFor="gender">Gender</label>
-//                   <select id="gender" className="form-control">
-//                     <option value="male">Male</option>
-//                     <option value="female">Female</option>
-//                     <option value="other">Other</option>
-//                   </select>
-//                 </div>
-//                 <div className="form-outline">
-//                   <label htmlFor="age">Age</label>
-//                   <input type="number" id="age" className="form-control" onChange={(e) => Setage(e.target.value)}/>
-//                 </div>
-//                 <div className="form-outline">
-//                   <label htmlFor="mailId">Mail ID</label>
-//                   <input type="email" id="mailId" className="form-control" onChange={(e) => setEmail(e.target.value)}/>
-//                 </div>
-//                 <div className="form-outline">
-// <<<<<<< HEAD
-//                   <label htmlFor="customerId">Create Your Password</label>
-// =======
-//                   <label htmlFor="customerId">Create Your Customer ID</label>
-// >>>>>>> 9844357e83214f1f457aff9b664a8340512befb6
-//                   <input type="text" id="customerId" className="form-control" onChange={(e) => setPassword(e.target.value)}/>
-//                 </div>
-//                 <button type="submit" className="btn btn-primary">Sign Up</button>
-//               </form>
-//               <div className="switch">
-//                 <p>Already have an account? <a href="/signin">Sign In Here</a></p>
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-//       </div>
-//     );
-//   };
-  
-//   export default SignUp;
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/styles.css';
+import Swal from 'sweetalert2';
 import bankLogo from '../images/bank-i.jpg';
-import signUpImage from '../images/bank-c.jpg';
 import { auth, db } from '../firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import m1 from '../images/m2.jpg';
+import m2 from '../images/m1.jpg';
+import m3 from '../images/m3.jpg';
+import '../styles/signup.css';
+import sec from '../images/sec.webp'
 
 const SignUp = () => {
-  const navigate = useNavigate(); // Use for navigation
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
+  // Show popup on page load
+  useEffect(() => {
+    // Set a timeout to delay the popup
+    const timer = setTimeout(() => {
+        setShowPopup(true);
+    }, 3000); // Delay for 3 seconds
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
+}, []);
+
+  // Close popup handler
+  const handleClosePopup = () => setShowPopup(false);
+
+  // Navigation handlers for popup buttons
+  const handleContinue = () => {
+    setShowPopup(false);
+  };
+
+  const handleSignIn = () => {
+    navigate('/signin');
+  };
+
+
+  // State variables for user input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
+  const [showPasswordRules, setShowPasswordRules] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
 
+  // Image slider state
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [m1, m2, m3];
+
+  // Email validation handler
+  const isEmailValid = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Password validation handlers
+  const handlePasswordFocus = () => setShowPasswordRules(true);
+  const handlePasswordBlur = () => setShowPasswordRules(false);
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+
+    // Check password validation rules
+    const isValid =
+      value.length >= 8 &&
+      /[a-z]/.test(value) &&
+      /[A-Z]/.test(value) &&
+      /\d/.test(value) &&
+      /[!@#$%^&*]/.test(value);
+
+    setPasswordValid(isValid);
+  };
+
+  // Duplicate email check
+  const checkDuplicateEmail = async (email) => {
+    const docRef = doc(db, "Users", email);
+    const docSnap = await setDoc(docRef);
+    return docSnap.exists();
+  };
+
+  // Registration handler
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Validation checks
+    if (!email || !password || !fname || !lname || !age || !gender) {
+      Swal.fire({
+        title: "Error!",
+        text: "All fields are required.",
+        icon: "error",
+        animation: true,
+      });
+      return;
+    }
+    if (!isEmailValid(email)) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please enter a valid email.",
+        icon: "error",
+        animation: true,
+      });
+      return;
+    }
+    if (await checkDuplicateEmail(email)) {
+      Swal.fire({
+        title: "Error!",
+        text: "An account with this email already exists.",
+        icon: "error",
+        animation: true,
+      });
+      return;
+    }
+    if (Number(age) < 18) {
+      Swal.fire({
+        title: "Error!",
+        text: "You must be at least 18 years old to register.",
+        icon: "error",
+        animation: true,
+      });
+      return;
+    }
+    if (!passwordValid) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please enter a valid password.",
+        icon: "error",
+        animation: true,
+      });
+      return;
+    }
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
-      console.log(user);
+
       if (user) {
         await setDoc(doc(db, "Users", user.uid), {
           email: user.email,
           password: password,
           firstname: fname,
           lastname: lname,
-          Age: age,
+          age: age,
+          gender: gender,
+        });
+
+        Swal.fire({
+          title: "Successful Account Created!",
+          text: "Welcome to Trst Banking! Press OK to login to the home page of your banking.",
+          icon: "success",
+          animation: true,
+        }).then(() => {
+          navigate("/home");
         });
       }
-      window.location.href = '/home';
     } catch (error) {
-      console.log(error.message);
+      Swal.fire({
+        title: "Error!",
+        text: "An error occurred. Please try again.",
+        icon: "error",
+        animation: true,
+      });
     }
   };
 
+  // Image slider effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <div>
-      <header>
-        <div className="header-content">
-          <img src={bankLogo} alt="Bank Logo" className="logo" />
-          <h1 style={{ padding: '10px' }}>Welcome to Trst Banking</h1>
+     {showPopup && (
+  <div className="popup_signup">
+    <button className="popup-close_signup" onClick={handleClosePopup}>X</button>
+    <div className="popup-content_signup">
+      <img src={bankLogo} alt="Bank Logo" className="popup-image_signup" />
+      <div className="popup-text_signup">
+        <p style={{color:'black'}}>Welcome to Trst Banking..Again!</p>
+        
+        <p>Thank you for choosing your banking partner as us.</p>
+        <p>If you already have an account, please sign in.</p>
+        <div className="popup-buttons_signup">
+          <button onClick={handleSignIn} className="popup-signin-btn_signup">Sign In</button>
+          <button onClick={handleContinue} className="popup-continue-btn_signup">Continue</button>
         </div>
-      </header>
-
-      <section className="container" style={{ height: '900px' }}>
-        <div className="sign-up-box">
-          <div className="image-box">
-            <img src={signUpImage} alt="Sign Up Image" className="img-fluid" style={{ objectFit: 'fill' }} />
-          </div>
-          <div className="form-box">
-            <h2>Sign Up</h2>
-            <form onSubmit={handleRegister}>
-              <div className="form-outline">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  className="form-control"
-                  onChange={(e) => setFname(e.target.value)}
-                />
-              </div>
-              <div className="form-outline">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  className="form-control"
-                  onChange={(e) => setLname(e.target.value)}
-                />
-              </div>
-              <div className="form-outline">
-                <label htmlFor="gender">Gender</label>
-                <select id="gender" className="form-control" onChange={(e) => setGender(e.target.value)}>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div className="form-outline">
-                <label htmlFor="age">Age</label>
-                <input
-                  type="number"
-                  id="age"
-                  className="form-control"
-                  onChange={(e) => setAge(e.target.value)}
-                />
-              </div>
-              <div className="form-outline">
-                <label htmlFor="mailId">Mail ID</label>
-                <input
-                  type="email"
-                  id="mailId"
-                  className="form-control"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="form-outline">
-                <label htmlFor="password">Create Your Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  className="form-control"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">Sign Up</button>
-            </form>
-            <div className="switch">
-              <p>Already have an account? <a href="/signin">Sign In Here</a></p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
+  </div>
+)}
+
+
+
+
+  {/* Header */}
+  <header className="header-content">
+    <div className="header-left">
+      <img src={bankLogo} alt="Bank Logo" className="logo" />
+      <h1>Welcome to Trst Banking</h1>
+    </div>
+    <div className='header-right' style={{ justifyContent: 'right' }}>
+      <nav className="nav-menu">
+        <div className="dropdown">
+          <button className="dropbtn">Banking</button>
+          <div className="dropdown-content">
+            <a href="https://www.google.com/intl/en-GB/account/about/">Account Types</a>
+            <a href="https://www.bajajfinserv.in/insights/the-different-types-of-loans-available-in-india">Loan Options</a>
+            <a href="https://www.policybazaar.com/life-insurance/investment-plans/articles/top-10-savings-plans/">Savings Plans</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn">Security</button>
+          <div className="dropdown-content">
+            <a href="https://website.rbi.org.in/web/rbi">Fraud Protection</a>
+            <a href="https://website.rbi.org.in/web/rbi">Account Security Tips</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn">Login</button>
+          <div className="dropdown-content">
+            <a href="https://bank-apl-with-front-and-backend.vercel.app/">Forgot Password</a>
+            <a href="https://bank-apl-with-front-and-backend.vercel.app/">Two-Factor Authentication</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn">Investments</button>
+          <div className="dropdown-content">
+            <a href="https://www.sumup.com/en-gb/invoices/dictionary/stock-management/">Mutual Funds</a>
+            <a href="https://www.sumup.com/en-gb/invoices/dictionary/stock-management/">Stock Trading</a>
+          </div>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn">Customer Support</button>
+          <div className="dropdown-content">
+            <a href="https://bank-apl-with-front-and-backend.vercel.app/">FAQs</a>
+            <a href="https://bank-apl-with-front-and-backend.vercel.app/">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  {/* Welcome Section */}
+  <section className="welcome-section">
+    <h2>Welcome to Trst Banking!</h2>
+    <p className="subtitle">Become part of legacy banking services.</p>
+    {/* Information Blocks */}
+  </section>
+
+  {/* Main Divisions */}
+  <section className="main-division">
+    {/* Image Slider */}
+    <div className="slider-container">
+      <div className="image-slider">
+        <div className="slides" style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}>
+          {images.map((image, index) => (
+            <div className="slide" key={index}>
+              <img src={image} height={750} style={{ maxHeight: "650px" }} className='slide-name' alt={`Slide ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Sign-Up Form */}
+    <div className="form-box">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleRegister}>
+        <div className="form-outline">
+          <label htmlFor="firstName">First Name</label>
+          <input type="text" id="firstName" className="form-control" onChange={(e) => setFname(e.target.value)} />
+        </div>
+        <div className="form-outline">
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" id="lastName" className="form-control" onChange={(e) => setLname(e.target.value)} />
+        </div>
+        <div className="form-outline">
+          <label htmlFor="gender">Gender</label>
+          <select id="gender" className="form-control" onChange={(e) => setGender(e.target.value)}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="form-outline">
+          <label htmlFor="age">Age</label>
+          <input type="number" id="age" className="form-control" onChange={(e) => setAge(e.target.value)} />
+        </div>
+        <div className="form-outline">
+          <label htmlFor="mailId">Mail ID</label>
+          <input type="email" id="mailId" className="form-control" onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div className="form-outline">
+          <label htmlFor="password">Create Your Password</label>
+          <input
+            type="password"
+            id="password"
+            className={`form-control ${passwordValid ? 'valid' : 'invalid'}`}
+            onChange={handlePasswordChange}
+            onFocus={handlePasswordFocus}
+            onBlur={handlePasswordBlur}
+          />
+          {showPasswordRules && (
+            <div className="password-rules">
+              <p className={password.length >= 8 ? 'valid' : 'invalid'}># At least 8 characters</p>
+              <p className={/[A-Z]/.test(password) ? 'valid' : 'invalid'}># At least one uppercase letter</p>
+              <p className={/[a-z]/.test(password) ? 'valid' : 'invalid'}># At least one lowercase letter</p>
+              <p className={/\d/.test(password) ? 'valid' : 'invalid'}># At least one number</p>
+              <p className={/[!@#$%^&*]/.test(password) ? 'valid' : 'invalid'}># At least one special character</p>
+            </div>
+          )}
+        </div>
+        <button type="submit" className="submit-btn">Register</button>
+      </form>
+      <div className="switch">
+        <p>Already have an account? <a href="/signin">Sign In Here</a></p>
+      </div>
+    </div>
+  </section>
+
+  {/* Why Choose Us Section */}
+  <section className="features-section">
+    <h2>Why Choose Us?</h2>
+    <br />
+    <div className="features-container">
+      <div className="feature feature-one">
+        <h3>Secure Banking</h3>
+        <p>Your safety is our priority. We use advanced encryption and security protocols to keep your data secure.</p>
+      </div>
+      <div className="feature feature-two">
+        <h3>24/7 Support</h3>
+        <p>Get assistance whenever you need it. Our dedicated support team is available around the clock.</p>
+      </div>
+      <div className="feature feature-three">
+        <h3>Easy Transactions</h3>
+        <p>Experience seamless transactions with our user-friendly platform, designed for efficiency and ease.</p>
+      </div>
+      <div className="feature feature-four">
+        <h3>Competitive Rates</h3>
+        <p>We offer competitive interest rates on savings and loans, helping you maximize your financial growth.</p>
+      </div>
+      <div className="feature feature-five">
+        <h3>Mobile Banking</h3>
+        <p>Access your account anytime, anywhere with our fully functional mobile app, designed for your convenience.</p>
+      </div>
+      <div className="feature feature-six">
+        <h3>Personalized Services</h3>
+        <p>Receive tailored financial advice and services to meet your unique banking needs and goals.</p>
+      </div>
+      <div className="feature feature-seven">
+        <h3>Rewards Program</h3>
+        <p>Join our rewards program to earn points for every transaction, redeemable for exciting benefits.</p>
+      </div>
+      <div className="feature feature-eight">
+        <h3>Easy Account Management</h3>
+        <p>Manage your accounts effortlessly with our intuitive online dashboard that puts you in control.</p>
+      </div>
+    </div>
+  </section>
+
+  {/* Security Information Section */}
+  <section className="security-tips-section">
+  <h2>Security Information</h2>
+  <div className="security-tips-container">
+    <p>
+      <strong>Beware of Phishing Scams:</strong> Remember that phishing scams can take many forms, including emails, texts, or phone calls. Never share your login details, and always verify the source before clicking on links or opening attachments. Our bank will never ask for your password via email or direct message.
+    </p>
+    <p>
+      <strong>Use Strong Passwords:</strong> Create complex passwords that are difficult to guess. Use a mix of uppercase and lowercase letters, numbers, and special characters. Change your passwords regularly and avoid using the same password across multiple accounts.
+    </p>
+    <p>
+      <strong>Enable Two-Factor Authentication:</strong> For an added layer of security, enable two-factor authentication (2FA) on your account. This requires a second form of verification in addition to your password, making it more challenging for unauthorized users to access your account.
+    </p>
+    <p>
+      <strong>Monitor Your Account:</strong> Regularly check your account statements and transaction history for any unauthorized activity. If you notice any discrepancies, report them to our customer support immediately.
+    </p>
+    <img 
+  src={sec} 
+  alt="Security Tips" 
+  className="security-image" 
+  style={{ 
+    maxWidth: '500px', 
+    maxHeight: '500px', 
+    width: 'auto', 
+    height: 'auto', 
+    marginLeft: 'auto', 
+    marginRight: 'auto', 
+    display: 'block' 
+  }} 
+/>
+
+
+  </div>
+</section>
+
+{/* Customer Support Section */}
+<section className="customer-support-section">
+  <h2>Help & Customer Support</h2>
+  <p>If you have any questions or need assistance, our dedicated customer support team is here to help. Reach out to us through the following channels:</p>
+  <ul>
+    <li><strong>Email:</strong> support@trstbanking.com</li>
+    <li><strong>Phone:</strong> 1-800-TRST-BNK (1-800-878-8265)</li>
+    <li><strong>Live Chat:</strong> Available on our website from 8 AM to 10 PM EST</li>
+  </ul>
+  <p>We’re committed to providing you with the best service possible and are here to address any concerns you may have.</p>
+</section>
+
+
+  <footer>
+    <p>&copy; 2024 Trst Banking. All Rights Reserved.</p>
+  </footer>
+</div>
+
+
+    
   );
 };
 

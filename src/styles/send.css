@@ -1,0 +1,66 @@
+/* Container for the Send Money page */
+.send-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    margin-top: 20px;
+    background-color: #e0f7e9; /* Background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Set a max width for the container */
+    margin: 20px auto; /* Center the container */
+  }
+  
+  /* Input section styling */
+  .input-section {
+    display: flex;
+    justify-content: center; /* Center inputs */
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields styling */
+  .amount-input,
+  .email-input {
+    width: 300px; /* Increased width for inputs */
+    height: 40px; /* Increased height for inputs */
+    margin-right: 10px; /* Space between inputs */
+    padding: 5px; /* Padding for comfort */
+    font-size: 16px; /* Increased font size */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  /* Submit button styling */
+  .submit-button {
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    margin-top: 10px; /* Space above the button */
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* History section styling */
+  .history-section {
+    text-align: center; /* Center text */
+  }
+  
+  .history-list {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .history-list li {
+    background-color: #f9f9f9; /* Light background for list items */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Spacing between list items */
+    border-left: 4px solid #4caf50; /* Green left border for emphasis */
+  }
+  

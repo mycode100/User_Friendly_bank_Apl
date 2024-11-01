@@ -1,0 +1,589 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7e9; /* Light background for the whole page */
+  }
+  
+  /* Header Styles */
+  .nav-menu {
+  display: flex;
+  gap: 20px; /* Space between dropdowns */
+  align-items: right;
+  justify-items: right;
+  justify-content: right;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff; /* Background for dropdown items */
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #333; /* Text color for dropdown items */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1; /* Background color on hover */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(255, 255, 255, 0.1); /* Background color on dropdown hover */
+}
+.header-content {
+  background-color: #01a0e1; /* Primary color */
+  color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between logo/name and nav menu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between logo and text */
+}
+
+.logo {
+  width: 60px; /* Slightly smaller logo size */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Enlarge on hover */
+}
+
+.header-content h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Subtle spacing for readability */
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px; /* Space between dropdowns */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff; /* Background for dropdown items */
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #333; /* Text color for dropdown items */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1; /* Background color on hover */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show dropdown on hover */
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(255, 255, 255, 0.1); /* Background color on dropdown hover */
+}
+
+  
+  /* Welcome Section */
+  /* Welcome Section */
+.welcome-section {
+  background-color: #e0f7e9;/* Light background */
+  padding: 20px 40px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.welcome-section h2 {
+  color: #2b3a67; /* Dark blue for the main heading */
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #495c89; /* Slightly lighter than main heading */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  line-height: 1.6;
+  color: #4a4a4a; /* Standard text color */
+}
+
+.info-block {
+  background: #ffffff; /* White background for text blocks */
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.info-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2b3a67; /* Dark blue for titles */
+  margin-bottom: 10px;
+}
+
+.info-text {
+  font-size: 1rem;
+  color: #333;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .welcome-section {
+    padding: 15px;
+  }
+  .info-content {
+    gap: 20px;
+  }
+}
+
+  
+/* Main Division */
+.main-division {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px;
+    gap: 20px; /* Added gap between flex items */
+    background-color: #e0f7e9;
+  }
+  
+  /* Image Slider */
+  .slider-container {
+    flex: 1 1 40%; /* Take 40% of space */
+    position: relative;
+    max-width: 750px; /* Added max-width for better control */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-slider {
+    overflow: hidden;
+    border-radius: 8px; /* Rounded corners for the slider */
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+  }
+  
+  .slide-name {
+    width: 100%;
+    border-radius: 8px;
+    height: 900px;
+  }
+  
+  /* Sign-Up Form */
+  .form-box {
+    flex: 1 1 40%; /* Take 40% of space */
+    background-color: #e0f7e9; /* White background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    max-width: 750px; /* Added max-width for better control */
+    max-height: 750px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-box h2 {
+    color: #007bff; /* Primary color */
+    margin-bottom: 20px;
+    text-align: center; /* Centered heading */
+  }
+  
+  .form-outline {
+    margin-bottom: 20px;
+  }
+  
+  .form-outline label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555; /* Dark gray for labels */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    transition: border-color 0.3s;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff; /* Focus border color */
+    outline: none;
+  }
+  
+  .password-rules {
+    margin-top: 5px;
+    font-size: 0.9em; /* Slightly smaller font size */
+  }
+  
+  .password-rules .valid {
+    color: #28a745; /* Success color for valid rules */
+  }
+  
+  .password-rules .invalid {
+    color: #dc3545; /* Danger color for invalid rules */
+  }
+  .submit-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    font-size: 1rem; /* Button font size */
+    padding: 12px 24px; /* Padding around text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+    
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift effect */
+  }
+  
+  .submit-btn:active {
+    background-color: #3e8e41; /* Even darker green when clicked */
+    transform: translateY(0); /* Reset lift effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjust shadow */
+  }
+  
+  .submit-btn:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.5); /* Custom focus ring */
+  }
+  
+  
+  /* Switch to Login */
+  .switch {
+    margin-top: 20px;
+    text-align: center; /* Center the switch text */
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #01a0e1; /* Primary color */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .main-division {
+      flex-direction: column;
+    }
+  
+    .slider-container,
+    .form-box {
+      flex: 1 1 100%; /* Full width on smaller screens */
+      margin-bottom: 20px;
+    }
+  
+    .services-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .service-card {
+      width: 80%; /* Wider cards on small screens */
+      margin-bottom: 20px;
+    }
+  }
+
+
+  .why-choose-us {
+    background-color: #f5faff; /* Light background for contrast */
+    padding: 50px 20px;
+    text-align: center;
+    color: #333;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    max-width: 100%;
+}
+
+.why-choose-us h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #01a0e1; /* Primary color */
+    margin-bottom: 30px;
+}
+
+.features-section {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #e0f7e9;
+  text-align: center;
+}
+
+.features-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.feature {
+  flex: 1;
+  min-width: 280px;
+  padding: 20px;
+  color: #ffffff;
+  border-radius: 8px;
+  background-size: 300% 300%;
+  animation: gradientMove 3s ease infinite; /* Reduced duration for faster transition */
+}
+.feature-one {
+  background-image: linear-gradient(to top right, #1e90ff, #00bfff); /* Light blue gradient */
+}
+
+.feature-two {
+  background-image: linear-gradient(to bottom right, #00bfff, #1e90ff); /* Blue gradient */
+}
+
+.feature-three {
+  background-image: linear-gradient(to top right, #ff6a00, #ee0979); /* Orange to pink gradient */
+}
+
+.feature-four {
+  background-image: linear-gradient(to bottom left, #ff7e5f, #feb47b); /* Warm sunset gradient */
+}
+
+.feature-five {
+  background-image: linear-gradient(to top right, #6a11cb, #2575fc); /* Purple to blue gradient */
+}
+
+.feature-six {
+  background-image: linear-gradient(to bottom right, #ffafbd, #ffc3a0); /* Soft peach gradient */
+}
+
+.feature-seven {
+  background-image: linear-gradient(to top right, #ff758c, #ff7eb3); /* Pink gradient */
+}
+
+.feature-eight {
+  background-image: linear-gradient(to bottom right, #43e97b, #38f9d7); /* Green to teal gradient */
+}
+
+
+.feature h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 50%; /* Adjusted to give a smoother effect */
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.security-tips-section,
+.customer-support-section {
+  background-color: #e0f7e9; /* White background for contrast */
+  border-radius: 8px; /* Rounded corners */ 
+  padding: 20px; /* Padding for inner spacing */
+  margin: 20px 0; /* Margin for spacing between sections */
+}
+
+h2 {
+  color: #3c763d; /* Dark green color for headings */
+  font-size: 24px; /* Increase font size for headings */
+  margin-bottom: 15px; /* Space below heading */
+}
+
+p {
+  color: #555555; /* Dark grey text for better readability */
+  line-height: 1.6; /* Increased line height for readability */
+  margin-bottom: 10px; /* Spacing between paragraphs */
+}
+
+strong {
+  color: #3c763d; /* Emphasize strong text with dark green */
+}
+
+.security-tips-container {
+  margin-bottom: 20px; /* Spacing below the security tips */
+}
+
+.security-image {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Rounded corners for the image */
+  margin-top: 15px; /* Space above image */
+}
+
+.customer-support-section ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.customer-support-section li {
+  margin-bottom: 10px; /* Space between list items */
+  color: #555555; /* Dark grey text for list items */
+}
+
+/* Optional hover effect for list items */
+.customer-support-section li:hover {
+  text-decoration: underline; /* Underline on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
+.popup_signup {
+  position: fixed;
+  top: 20%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  background-image: url('https://storage.pixteller.com/designs/designs-images/2019-03-27/05/love-and-passion-background-backgrounds-romantic-1-5c9b9945866ba.png'); /* Add your background image */
+  background-size: cover; /* Cover the entire popup */
+  background-position: center; /* Center the background image */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  padding: 20px; /* Padding inside the popup */
+  z-index: 1000; /* Ensure it appears above other elements */
+  display: flex; /* Flexbox to arrange image and text */
+  max-width: 600px; /* Maximum width of the popup */
+  width: 100%; /* Full width to ensure responsiveness */
+  color: #fff; /* Text color to ensure visibility against the background */
+}
+
+
+.popup-close_signup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px; /* Font size for the close button */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.popup-content_signup {
+  display: flex; /* Flexbox to arrange image and text side by side */
+  width: 100%; /* Full width for content */
+}
+
+.popup-image_signup {
+  width: 150px; /* Set a fixed width for the image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Space between image and text */
+}
+
+.popup-text_signup {
+  flex-grow: 1; /* Allow text to grow and fill space */
+}
+
+.popup-buttons_signup {
+  display: flex; /* Flexbox to arrange buttons side by side */
+  margin-top: 15px; /* Space above buttons */
+}
+
+.popup-signin-btn_signup,
+.popup-continue-btn_signup {
+  display: inline-block;
+  background-color: #007bff; /* Button background color */
+  color: #ffffff; /* Button text color */
+  padding: 10px 15px; /* Button padding */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded button corners */
+  cursor: pointer; /* Change cursor on hover */
+  margin-right: 10px; /* Space between buttons */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.popup-signin-btn_signup:hover,
+.popup-continue-btn_signup:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+  

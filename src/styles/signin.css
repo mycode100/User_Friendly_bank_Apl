@@ -1,0 +1,465 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7e9;
+}
+
+/* Header Styles */
+.header-content {
+    background-color: #01a0e1;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.header-content h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 80px); /* Adjust for header height */
+}
+
+.sign-in-box {
+    display: flex;
+    width: 80%; /* Adjust width as needed */
+    max-width: 900px; /* Max width for larger screens */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Prevents overflow of children */
+    background-color: white; /* Background color for the sign-in box */
+}
+
+.img-fluid {
+    flex: 1; /* Take up remaining space */
+    object-fit: cover; /* Ensure the image covers the area */
+    max-height: 400px; /* Max height to maintain aspect ratio */
+}
+
+.form-box {
+    flex: 1; /* Take up remaining space */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-outline {
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+.form-outline label {
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Make labels bold */
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ccc; /* Border color for input */
+    border-radius: 4px; /* Rounded corners */
+    width: 100%; /* Full width */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.form-control:focus {
+    border-color: #01a0e1; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.btn {
+    background-color: #01a0e1; /* Primary button color */
+    color: white; /* Button text color */
+    padding: 10px;
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.btn:hover {
+    background-color: #0291c5; /* Darker shade on hover */
+}
+
+.switch {
+    text-align: center; /* Center the text */
+    margin-top: 15px; /* Space above switch */
+}
+
+.switch a {
+    color: #01a0e1; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.switch a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+/* Sign In Section Styles */
+.sign-in-section {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: calc(100vh - 80px); /* Full height minus header */
+    padding: 20px; /* Add some padding */
+    background-color: #e0f7e9; /* Background color */
+    top: 0;
+}
+
+.sign-in-container {
+    display: flex; /* Flexbox for image and form alignment */
+    max-width: 900px; /* Limit maximum width */
+    width: 100%; /* Full width */
+    background-color:#e0f7e9; /* White background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    overflow: hidden; /* Prevents overflow of children */
+    padding: 20px; /* Padding around the container */
+    gap: 20px; /* Gap between image and form */
+}
+
+.sign-in-image {
+    flex: 1; /* Take up equal space */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    max-height: 750px; /* Max height for the image container */
+}
+
+.image-fluid {
+    max-width: 100%; /* Responsive image */
+    max-height: 100%; /* Ensure image does not exceed its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px 0 0 8px; /* Round corners for the image */
+}
+
+.sign-in-form {
+    flex: 1; /* Take up equal space */
+    padding: 30px; /* Add padding */
+    display: flex; /* Use flexbox for vertical alignment */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content */
+    max-height: 750px; /* Max height for the form */
+}
+
+.sign-in-form h2 {
+    font-size: 2rem; /* Heading size */
+    margin-bottom: 20px; /* Space below heading */
+    color: #01a0e1; /* Primary color */
+    text-align: center; /* Center align text */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+.form-group label {
+    display: block; /* Block display for label */
+    margin-bottom: 5px; /* Space below label */
+    font-weight: bold; /* Make labels bold */
+}
+
+.form-input {
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc; /* Border color for input */
+    border-radius: 4px; /* Rounded corners */
+    width: 100%; /* Full width */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.form-input:focus {
+    border-color: #01a0e1; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.submit-button {
+    background-color: #01a0e1; /* Primary button color */
+    color: white; /* Button text color */
+    padding: 10px; /* Padding inside button */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 1rem; /* Font size for button */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.submit-button:hover {
+    background-color: #0291c5; /* Darker shade on hover */
+}
+
+.switch-account {
+    text-align: center; /* Center text */
+    margin-top: 20px; /* Space above switch text */
+}
+
+.switch-account a {
+    color: #01a0e1; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.switch-account a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.why-choose-us {
+    background-color: #e0f7e9; /* Light background for contrast */
+    padding: 50px 20px;
+    text-align: center;
+    color: #333;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    max-width: 100%;
+}
+
+.why-choose-us h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #01a0e1; /* Primary color */
+    margin-bottom: 30px;
+}
+
+
+.features-section-s {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #e0f7e9;
+  text-align: center;
+}
+
+.features-container-s {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.feature {
+  flex: 1;
+  min-width: 280px;
+  padding: 20px;
+  color: #ffffff;
+  border-radius: 8px;
+  background-size: 300% 300%;
+  animation: gradientMove 3s ease infinite; /* Reduced duration for faster transition */
+}
+.feature-one {
+  background-image: linear-gradient(to top right, #1e90ff, #00bfff); /* Light blue gradient */
+}
+
+.feature-two {
+  background-image: linear-gradient(to bottom right, #00bfff, #1e90ff); /* Blue gradient */
+}
+
+.feature-three {
+  background-image: linear-gradient(to top right, #ff6a00, #ee0979); /* Orange to pink gradient */
+}
+
+.feature-four {
+  background-image: linear-gradient(to bottom left, #ff7e5f, #feb47b); /* Warm sunset gradient */
+}
+
+.feature-five {
+  background-image: linear-gradient(to top right, #6a11cb, #2575fc); /* Purple to blue gradient */
+}
+
+.feature-six {
+  background-image: linear-gradient(to bottom right, #ffafbd, #ffc3a0); /* Soft peach gradient */
+}
+
+.feature-seven {
+  background-image: linear-gradient(to top right, #ff758c, #ff7eb3); /* Pink gradient */
+}
+
+.feature-eight {
+  background-image: linear-gradient(to bottom right, #43e97b, #38f9d7); /* Green to teal gradient */
+}
+
+
+.feature h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 50%; /* Adjusted to give a smoother effect */
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+
+footer {
+    background-color: #01a0e1; /* Primary color */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+
+
+  @media (max-width: 768px) {
+    .sign-in-box {
+        flex-direction: column; /* Stack image and form on smaller screens */
+    }
+    .img-fluid {
+        max-height: 200px; /* Reduce image height */
+    }
+    .form-box {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+    .header-content h1 {
+        font-size: 1.5rem; /* Adjust header font size */
+    }
+    .nav-menu {
+        flex-direction: column; /* Stack nav items vertically */
+    }
+}
+
+
+.security-tips-section,
+.customer-support-section {
+  background-color: #e0f7e9; /* White background for contrast */
+  border-radius: 8px; /* Rounded corners */ 
+  padding: 20px; /* Padding for inner spacing */
+  margin: 20px 0; /* Margin for spacing between sections */
+}
+
+h2 {
+  color: #3c763d; /* Dark green color for headings */
+  font-size: 24px; /* Increase font size for headings */
+  margin-bottom: 15px; /* Space below heading */
+}
+
+p {
+  color: #555555; /* Dark grey text for better readability */
+  line-height: 1.6; /* Increased line height for readability */
+  margin-bottom: 10px; /* Spacing between paragraphs */
+}
+
+strong {
+  color: #3c763d; /* Emphasize strong text with dark green */
+}
+
+.security-tips-container {
+  margin-bottom: 20px; /* Spacing below the security tips */
+}
+
+.security-image {
+  max-width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Rounded corners for the image */
+  margin-top: 15px; /* Space above image */
+}
+
+.customer-support-section ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.customer-support-section li {
+  margin-bottom: 10px; /* Space between list items */
+  color: #555555; /* Dark grey text for list items */
+}
+
+/* Optional hover effect for list items */
+.customer-support-section li:hover {
+  text-decoration: underline; /* Underline on hover */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+section.sign-in-section{
+    margin: 0;
+    padding: 0;
+}

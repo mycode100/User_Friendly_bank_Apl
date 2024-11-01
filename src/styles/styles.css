@@ -116,3 +116,27 @@ h2 {
 .switch a:hover {
     text-decoration: underline;
 }
+
+/* Add these styles to your CSS file */
+.password-rules p {
+    font-size: 18px;
+    margin: 2px 0;
+    font-weight: bold;
+  }
+  
+  .valid {
+    color: green; /* Green text for valid conditions */
+  }
+  
+  .invalid {
+    color: red; /* Red text for invalid conditions */
+  }
+  
+  input.valid {
+    border-color: green; /* Green border for valid input */
+  }
+  
+  input.invalid {
+    border-color: red; /* Red border for invalid input */
+  }
+  

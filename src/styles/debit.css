@@ -1,0 +1,56 @@
+.debit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    margin-top: 20px;
+  }
+  
+  .input-section {
+    display: flex;
+    justify-content: center; /* Center inputs */
+    margin-bottom: 20px;
+  }
+  
+  .amount-input {
+    width: 300px; /* Increased width for the amount input */
+    height: 40px; /* Increased height for the amount input */
+    margin-right: 10px; /* Space between input and select */
+    padding: 5px; /* Padding for comfort */
+    font-size: 16px; /* Increased font size */
+  }
+  
+  .description-select {
+    width: 300px; /* Increased width for the description select */
+    height: 40px; /* Increased height for the description select */
+    padding: 5px; /* Padding for comfort */
+    font-size: 16px; /* Increased font size */
+  }
+  
+  .submit-section {
+    display: flex;
+    justify-content: center; /* Center submit button */
+    margin-bottom: 20px;
+  }
+  
+  .submit-button {
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .history-section {
+    text-align: center; /* Center text */
+  }
+  
+  .history-list {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+  }
+  

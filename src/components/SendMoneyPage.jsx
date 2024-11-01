@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../firebase';
-import '../styles/styles2.css';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import '../styles/send.css';
 
 const SendMoneyPage = () => {
   const [sendAmount, setSendAmount] = useState('');
@@ -10,7 +12,8 @@ const SendMoneyPage = () => {
   const [userId, setUserId] = useState(null);
   const [customers, setCustomers] = useState([]);
   const [customerEmail, setCustomerEmail] = useState('');
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Fetch send money history for the logged-in user
   const fetchSendMoneyHistory = async (userId) => {
@@ -73,46 +76,88 @@ const SendMoneyPage = () => {
         setSendMoneyHistory([...sendMoneyHistory, newTransaction]);
         setSendAmount(''); // Reset amount input
         setCustomerEmail(''); // Reset customer email input
+        Swal.fire({
+          icon: 'success',
+          title: 'Transaction Successful',
+          text: 'Money sent successfully!',
+          confirmButtonText: 'OK',
+        });
       } catch (error) {
         console.error('Error sending money: ', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Transaction Failed',
+          text: 'There was an error sending money.',
+          confirmButtonText: 'OK',
+        });
       }
     } else {
-      console.error('Error: Customer not found or missing data.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Input Error',
+        text: 'Please fill in all fields correctly.',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
-  return (
-    <div>
+  const Header = ({ onBack }) => {
+    return (
       <div className="header">
         <h1>Send Money</h1>
+        <button
+          className="name_send" // Keep class name consistent with DebitPage
+          onClick={onBack}
+          style={{
+            backgroundColor: '#333',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            padding: '10px 15px',
+            cursor: 'pointer',
+            float: 'right',
+            marginTop: '10px'
+          }}
+        >
+          Back to Home
+        </button>
       </div>
-      <div className="container input-enabled"> {/* Add input-enabled class */}
-        <div className="input-section">
-          <input
-            type="number"
-            value={sendAmount}
-            onChange={(e) => setSendAmount(e.target.value)}
-            placeholder="Enter Amount"
-          />
-          <input
-            type="email"
-            value={customerEmail}
-            onChange={(e) => setCustomerEmail(e.target.value)}
-            placeholder="Enter Customer Email"
-          />
-          <button onClick={sendMoney}>Submit</button>
-        </div>
+    );
+  };
 
-        <div className="history-section">
-          <h3>Send Money History</h3>
-          <ul>
-            {sendMoneyHistory.map((item, index) => (
-              <li key={index}>
-                Amount: ${item.amount}, Customer ID: {item.customerID}
-              </li>
-            ))}
-          </ul>
-        </div>
+  return (
+    <div className="container debit-container"> {/* Added debit-container class */}
+      <Header onBack={() => navigate('/home')} /> {/* Navigation function to go back */}
+        <br />
+        <br />
+      <div className="input-section">
+        <input
+          type="number"
+          value={sendAmount}
+          onChange={(e) => setSendAmount(e.target.value)}
+          placeholder="Enter Amount"
+          className="amount-input" // Keep class name consistent with DebitPage
+        />
+        <input
+          type="email"
+          value={customerEmail}
+          onChange={(e) => setCustomerEmail(e.target.value)}
+          placeholder="Enter Customer Email"
+          className="email-input" // New class for styling
+        />
+      </div>
+      <div className="submit-section">
+        <button className="submit-button" onClick={sendMoney}>Submit</button>
+      </div>
+      <div className="history-section">
+        <h3>Send Money History</h3>
+        <ul className="history-list">
+          {sendMoneyHistory.map((item, index) => (
+            <li key={index}>
+              Amount: ${item.amount}, Customer ID: {item.customerID}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
