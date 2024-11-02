@@ -213,37 +213,37 @@ const SignUp = () => {
         <div className="dropdown">
           <button className="dropbtn">Banking</button>
           <div className="dropdown-content">
-            <a href="https://www.google.com/intl/en-GB/account/about/">Account Types</a>
-            <a href="https://www.bajajfinserv.in/insights/the-different-types-of-loans-available-in-india">Loan Options</a>
-            <a href="https://www.policybazaar.com/life-insurance/investment-plans/articles/top-10-savings-plans/">Savings Plans</a>
+            <a href="#">Account Types</a>
+            <a href="#">Loan Options</a>
+            <a href="#">Savings Plans</a>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Security</button>
           <div className="dropdown-content">
-            <a href="https://website.rbi.org.in/web/rbi">Fraud Protection</a>
-            <a href="https://website.rbi.org.in/web/rbi">Account Security Tips</a>
+            <a href="#">Fraud Protection</a>
+            <a href="#">Account Security Tips</a>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Login</button>
           <div className="dropdown-content">
-            <a href="https://bank-apl-with-front-and-backend.vercel.app/">Forgot Password</a>
-            <a href="https://bank-apl-with-front-and-backend.vercel.app/">Two-Factor Authentication</a>
+            <a href="#">Forgot Password</a>
+            <a href="#">Two-Factor Authentication</a>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Investments</button>
           <div className="dropdown-content">
-            <a href="https://www.sumup.com/en-gb/invoices/dictionary/stock-management/">Mutual Funds</a>
-            <a href="https://www.sumup.com/en-gb/invoices/dictionary/stock-management/">Stock Trading</a>
+            <a href="#">Mutual Funds</a>
+            <a href="#">Stock Trading</a>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Customer Support</button>
           <div className="dropdown-content">
-            <a href="https://bank-apl-with-front-and-backend.vercel.app/">FAQs</a>
-            <a href="https://bank-apl-with-front-and-backend.vercel.app/">Contact Us</a>
+            <a href="#">FAQs</a>
+            <a href="#">Contact Us</a>
           </div>
         </div>
       </nav>
