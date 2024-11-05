@@ -1,37 +1,30 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import bankLogo from '../images/bank-i.jpg';
 import { auth, db } from '../firebase';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import m1 from '../images/m2.jpg';
 import m2 from '../images/m1.jpg';
 import m3 from '../images/m3.jpg';
 import '../styles/signup.css';
-import sec from '../images/sec.webp'
+import sec from '../images/sec.webp';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
 
-  // Show popup on page load
   useEffect(() => {
-    // Set a timeout to delay the popup
     const timer = setTimeout(() => {
-        setShowPopup(true);
-    }, 3000); // Delay for 3 seconds
+      setShowPopup(true);
+    }, 3000); // 3 seconds delay
 
-    // Cleanup the timer on component unmount
     return () => clearTimeout(timer);
-}, []);
-    
+  }, []);
 
-  // Close popup handler
   const handleClosePopup = () => setShowPopup(false);
 
-  // Navigation handlers for popup buttons
   const handleContinue = () => {
     setShowPopup(false);
   };
@@ -40,8 +33,6 @@ const SignUp = () => {
     navigate('/signin');
   };
 
-
-  // State variables for user input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
@@ -51,23 +42,17 @@ const SignUp = () => {
   const [showPasswordRules, setShowPasswordRules] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
 
-  // Image slider state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [m1, m2, m3];
 
-  // Email validation handler
-  const isEmailValid = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+  const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  // Password validation handlers
   const handlePasswordFocus = () => setShowPasswordRules(true);
   const handlePasswordBlur = () => setShowPasswordRules(false);
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
 
-    // Check password validation rules
     const isValid =
       value.length >= 8 &&
       /[a-z]/.test(value) &&
@@ -78,27 +63,24 @@ const SignUp = () => {
     setPasswordValid(isValid);
   };
 
-  // Duplicate email check
   const checkDuplicateEmail = async (email) => {
     const docRef = doc(db, "Users", email);
-    const docSnap = await setDoc(docRef);
+    const docSnap = await getDoc(docRef);
     return docSnap.exists();
   };
 
-  // Registration handler
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Validation checks
-    if (!email || !password || !fname || !lname || !age || !gender) {
-      Swal.fire({
-        title: "Error!",
-        text: "All fields are required.",
-        icon: "error",
-        animation: true,
-      });
-      return;
-    }
+    // if (!email || !password || !fname || !lname || !age || !gender) {
+    //   Swal.fire({
+    //     title: "Error!",
+    //     text: "All fields are required.",
+    //     icon: "error",
+    //     animation: true,
+    //   });
+    //   return;
+    // }
     if (!isEmailValid(email)) {
       Swal.fire({
         title: "Error!",
@@ -151,12 +133,12 @@ const SignUp = () => {
         });
 
         Swal.fire({
-          title: "Successful Account Created!",
-          text: "Welcome to Trst Banking! Press OK to login to the home page of your banking.",
+          title: "Account Created!",
+          text: "Welcome to Trst Banking! Press OK to proceed to your banking dashboard.",
           icon: "success",
           animation: true,
         }).then(() => {
-          navigate("/home");
+          navigate("/home"); // Navigate to home after successful registration
         });
       }
     } catch (error) {
@@ -169,7 +151,6 @@ const SignUp = () => {
     }
   };
 
-  // Image slider effect
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
